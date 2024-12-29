@@ -10,6 +10,7 @@
         <title>I was always there from the start. - Pdawg's site</title>
         <link rel="stylesheet" href="../assets/css/global.css">
         <link rel="stylesheet" href="../assets/css/blog.css">
+        <link rel="shortcut icon" type="image/png" href="/assets/content/favicon.png">
     </head>
     <body>
         <div class="navbar">
@@ -17,13 +18,16 @@
             <a href="/blog.html">Blog</a>
         </div>
         <div class="center">
-            <h1>I was always there from the start.</h1>
+            <div class="header">
+                <h1>I was always there from the start.</h1>
+                <span class="header-span">Posted 12/29/2024</span>
+            </div>
             <p style="font-size: 80%;">This post was written by both <a href="https://twitter.com/NSG650">NSG650</a> and me.</p>
             <br/>
             <p>I've always wanted to learn about bootkits and write one. This blog explains what bootkits are, and how the one we wrote works. Let's get an idea of what we're talking about first.</p>
             <br/>
             <h2>Bootkits</h2>
-            <p>A bootkit is a type of malware that infects the system during the boot process, usually being loaded before the bootloader, allowing it to patch or hook anything ahead of it. In this case, our goal is the patch the Windows kernel, <code>ntoskrnl.exe</code>. Bootkits are inherently subtle, making them very difficult to detect, and, by effect, making it much harder for anti-virus software to detect them or what changes they might of made to the system.</p>
+            <p>A bootkit is a type of malware that infects the system during the boot process, usually being loaded before the bootloader, allowing it to patch or hook anything ahead of it. In this case, our goal is the patch the Windows kernel, <code>ntoskrnl.exe</code>. Bootkits are inherently subtle, making them very difficult to detect, and, by effect, making it much harder for anti-virus software to detect them or what changes they might've made to the system.</p>
             <br/>
             <h2>UEFI</h2>
             <p>The Unified Extensible Firmware Interface (UEFI), created to replace BIOS, acts as an interface between the operating system and the firmware, providing a standard environment for bootloaders or pre-boot applications.
