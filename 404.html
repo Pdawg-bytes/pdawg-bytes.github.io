@@ -34,10 +34,30 @@
         <div>
             <p><strong>***PANIC: </strong>(cpu 0 caller 0xfffffff0deadbeef): "Unable to locate resource."</p>
             <p>Debugger message: panic</p>
+<<<<<<< HEAD
             <p>Kernel version: Pdawg's site Version 10.0.16299.0: Sun Dec 29 05:42:12 PDT 2024: root:nt-10.0.16299.0/RELEASE_X86_GENERIC</p>
+=======
+            <p>Kernel version: Pdawg's site Version 10.0.16299.0: <span id="kernel-datetime">Tue, Jan 19, 2038 22:14:07 EST</span>: root:nt-10.0.16299.0/RELEASE_X86_GENERIC</p>
+>>>>>>> e7dc4a2 (Make 404 have updating date stamp)
             <p>secure boot?: YES</p>
             <br/>
             <p>Panicked task 0xfffffff0deadbeef: 514 pages, 12 threads: NULL <a href="/">page_ref_t</a> pointer</p>
+            <script>
+                function updateDateTime() {
+                    const currentDate = new Date();
+        
+                    const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                    const formattedDate = currentDate.toLocaleDateString('en-US', dateOptions);
+        
+                    const formattedTime = currentDate.toLocaleTimeString('en-US', { hour12: false });
+        
+                    const formattedDateTime = `${formattedDate} ${formattedTime} EST`;
+                    document.getElementById("kernel-datetime").textContent = formattedDateTime;
+                }
+        
+                updateDateTime();
+                setInterval(updateDateTime, 1000);
+            </script>
         </div>
     </body>
 </html>
