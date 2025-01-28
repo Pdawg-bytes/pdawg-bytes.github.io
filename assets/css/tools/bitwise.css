@@ -48,3 +48,9 @@
     color: #ff6b6b;
     font-weight: bold;
 }
+
+p {
+    color: #aaaaaa;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 80%;
+}

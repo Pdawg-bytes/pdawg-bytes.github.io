@@ -1,3 +1,4 @@
+// ---BEGIN .NET INTERFACE CODE---
 import { dotnet } from '../../packs/tools/BitwiseSharp/dotnet.js';
 
 const isBrowser = typeof window !== "undefined";
@@ -14,6 +15,12 @@ exports.Program.Init();
 
 function evalInput(input) {
     return exports.Program.Evalate(input);
+}
+// ---END .NET INTERFACE CODE---
+
+   
+function isElementTextSelected(element){
+    return element.value.substr(element.selectionStart, element.selectionEnd - element.selectionStart) != '';
 }
 
 const terminal = document.getElementById('terminal');
@@ -86,35 +93,41 @@ function createLine() {
     prompt.classList.add('prompt');
     prompt.textContent = '>>> ';
 
-    const textarea = document.createElement('textarea');
-    textarea.classList.add('input');
-    textarea.rows = 1;
-    textarea.autofocus = true;
-    textarea.style.resize = 'none';
-    textarea.style.overflow = 'hidden';
+    const textArea = document.createElement('textArea');
+    textArea.classList.add('input');
+    textArea.rows = 1;
+    textArea.autofocus = true;
+    textArea.style.resize = 'none';
+    textArea.style.overflow = 'hidden';
 
     line.appendChild(prompt);
-    line.appendChild(textarea);
+    line.appendChild(textArea);
     terminal.appendChild(line);
     terminal.scrollTop = terminal.scrollHeight;
 
-    textarea.focus();
-    textarea.addEventListener('input', () => {
-        textarea.style.height = 'auto';
-        textarea.style.height = `${textarea.scrollHeight}px`;
+    textArea.focus();
+    textArea.addEventListener('input', () => {
+        textArea.style.height = 'auto';
+        textArea.style.height = `${textArea.scrollHeight}px`;
     });
 
-    textarea.addEventListener('keydown', handleKeydown.bind(null, textarea));
+    textArea.addEventListener('keydown', handleKeydown.bind(null, textArea));
 }
 
-function handleKeydown(textarea, e) {
+function handleKeydown(textArea, e) {
     if (e.key === 'Enter' && e.shiftKey) e.preventDefault();
+
+    if (e.ctrlKey && e.key === "c") {
+        if (!isElementTextSelected(textArea)) {
+            textArea.value = "";
+        }
+    }
 
     if (e.key === 'Enter') {
         e.preventDefault();
-        const value = textarea.value.trim();
+        const value = textArea.value.trim();
         if (value) handleInput(value);
-        textarea.disabled = true;
+        textArea.disabled = true;
         createLine();
     }
 
@@ -122,7 +135,7 @@ function handleKeydown(textarea, e) {
         e.preventDefault();
         if (historyIndex > 0) {
             historyIndex--;
-            textarea.value = history[historyIndex];
+            textArea.value = history[historyIndex];
         }
     }
 
@@ -130,10 +143,10 @@ function handleKeydown(textarea, e) {
         e.preventDefault();
         if (historyIndex < history.length - 1) {
             historyIndex++;
-            textarea.value = history[historyIndex];
+            textArea.value = history[historyIndex];
         } else {
             historyIndex = history.length;
-            textarea.value = '';
+            textArea.value = '';
         }
     }
 }
@@ -180,7 +193,9 @@ function handleHelp() {
         "  <code>sp &lt;number&gt;</code> - Set padding (e.g., <code>sp 8</code> for 8-character width).",
         "  ",
         "To view this help message again, type <code>help</code>.",
-        "This tool is powered by .NET 8.0 WebAssembly and developed under the project <a href='https://github.com/Pdawg-bytes/BitwiseSharp' target='_blank'>BitwiseSharp</a>."
+        "This shell also supports basic features like history navigation (using the up and down arrows) and clearing with <code>Ctrl-C</code>.",
+        "  ",
+        "<p>This tool is powered by .NET 8.0 WebAssembly and developed under the project <a href='https://github.com/Pdawg-bytes/BitwiseSharp' target='_blank'>BitwiseSharp</a>.</p>"
     ];
 
     helpMessage.forEach(line => appendOutput(line));
