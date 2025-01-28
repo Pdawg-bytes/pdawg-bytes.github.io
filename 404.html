@@ -41,16 +41,24 @@
             <script>
                 function updateDateTime() {
                     const currentDate = new Date();
-        
-                    const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                    
+                    const dateOptions = { 
+                        weekday: 'short', 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: 'numeric' 
+                    };
                     const formattedDate = currentDate.toLocaleDateString('en-US', dateOptions);
-        
+                    
                     const formattedTime = currentDate.toLocaleTimeString('en-US', { hour12: false });
-        
-                    const formattedDateTime = `${formattedDate} ${formattedTime}`;
+                    
+                    const timezoneFormatter = new Intl.DateTimeFormat('en-US', { timeZoneName: 'short' });
+                    const [{ value: timeZone }] = timezoneFormatter.formatToParts(currentDate).filter(part => part.type === "timeZoneName");
+            
+                    const formattedDateTime = `${formattedDate} ${formattedTime} ${timeZone}`;
                     document.getElementById("kernel-datetime").textContent = formattedDateTime;
                 }
-        
+            
                 updateDateTime();
                 setInterval(updateDateTime, 1000);
             </script>

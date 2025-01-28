@@ -1,0 +1,34 @@
+{
+  "mainAssemblyName": "WASMBridge.dll",
+  "resources": {
+    "hash": "sha256-GwNTnkrMsHPORq+LvJnhmjAkq25rLGZ41PUmvTVHCG0=",
+    "jsModuleNative": {
+      "dotnet.native.js": "sha256-MS5Jle7tNIlEzoCVckM0pR+Dx5JXx/NqxaSn48NrvaY="
+    },
+    "jsModuleRuntime": {
+      "dotnet.runtime.js": "sha256-soZyw6XWXOLKhA26AOyzSpCP5cAsw1wvhdPHSYNTMfQ="
+    },
+    "wasmNative": {
+      "dotnet.native.wasm": "sha256-ZuXeKEjHILhCmgjFUC4mHLHB9YYN0ZRKUrHuWIlDiJU="
+    },
+    "assembly": {
+      "BitwiseSharp.wasm": "sha256-EQ04z9HA2yD5go9ENMkqpqBGbULHv9lRqm0ZFdr6+s8=",
+      "System.Collections.Concurrent.wasm": "sha256-6V0WfpVssJWKdSoq5aWDHCakfWvAGD0Jt9QyST5Rg6k=",
+      "System.Collections.wasm": "sha256-sLMe0JUjI8InNIVbk8GM1mKAsfpzJSOFtKCo/aWNSIs=",
+      "System.Console.wasm": "sha256-pSmRmXrv7Pzt/J9Esy2mE5RXokmMtQo0SQQB2dL8qUA=",
+      "System.Linq.wasm": "sha256-v0Wd6Pb77qs2T9vbOhC4esKQbysoEF81eIGpqc0SX1M=",
+      "System.Private.CoreLib.wasm": "sha256-PgISbJIfwDBmAMdo/QAbs4WlHqmc6YaBUJWYluzqyng=",
+      "System.Runtime.InteropServices.JavaScript.wasm": "sha256-7dYqmirIITG8288V8Aygh2Y6ZdhGh9nq9CbfCSJW6uQ=",
+      "System.Runtime.Numerics.wasm": "sha256-/pp3WMbYADMXnmH6OrdGvohveOJnJRVd05Yd3FXF0TY=",
+      "System.Text.RegularExpressions.wasm": "sha256-tNNZzhTW6RFAsUMeSBYjnX/NXkQ2YcHAk6mxxQb4eN8=",
+      "WASMBridge.wasm": "sha256-He8LM8169fVunwi1+Qu2kM1NA02k73Tv0yXOlwabjvY="
+    },
+    "vfs": {
+      "runtimeconfig.bin": {
+        "supportFiles/0_runtimeconfig.bin": "sha256-DU56kdcIZEB13E6Ke+pvQfIbjOiINOdZDZ/5DKxruFY="
+      }
+    }
+  },
+  "debugLevel": 0,
+  "globalizationMode": "invariant"
+}
