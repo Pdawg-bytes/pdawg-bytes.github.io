@@ -16,6 +16,10 @@ exports.Program.Init();
 function evalInput(input) {
     return exports.Program.Evalate(input);
 }
+
+function toggleLogging(enabled) {
+    exports.Program.ToggleLogging(enabled);
+}
 // ---END .NET INTERFACE CODE---
 
    
@@ -159,6 +163,9 @@ function handleInput(value) {
 
     if (value === 'help') { handleHelp(); return; }
 
+    if (value === 'ev') { toggleLogging(true); return; }
+    if (value === 'dv') { toggleLogging(false); return; }
+
     if (value.startsWith('sd') || value.startsWith('sb') || value.startsWith('sh') || value.startsWith('sp')) {
         handleModeChange(value);
     } else {
@@ -191,6 +198,11 @@ function handleHelp() {
         "  <code>sh</code> - Switch output to hexadecimal.",
         "  <code>sd</code> - Switch output to decimal.",
         "  <code>sp &lt;number&gt;</code> - Set padding (e.g., <code>sp 8</code> for 8-character width).",
+        "  ",
+        "Commands for controlling verbose logging:",
+        "  <code>ev</code> - Enable logs in the JavaScript console.",
+        "  <code>dv</code> - Disable logs in the JavaScript console.",
+        "<p>Do note that verbose logs are only visible inside of the JavaScript console. You can access this by pressing <code>Ctrl-Shift-J</code>.</p>",
         "  ",
         "To view this help message again, type <code>help</code>.",
         "This shell also supports basic features like history navigation (using the up and down arrows) and clearing with <code>Ctrl-C</code>.",
