@@ -72,7 +72,7 @@ function formatOutput(value) {
                 const mask = (1n << BigInt(bitWidth)) - 1n;
                 formattedValue = (parsedValue & mask).toString(2);
             } else {
-                formattedValue = parsedValue.toString(2).padStart(bitWidth, '0');
+                formattedValue = parsedValue.toString(2);
             }
             break;
         }
