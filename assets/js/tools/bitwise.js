@@ -37,6 +37,16 @@ function padNumber(num, length) {
     return num.toString().padStart(length, '0');
 }
 
+function getMinimalBitWidth(num) {
+    const bigNum = BigInt(num);
+    if (bigNum >= 0n) {
+        return bigNum === 0n ? 1 : bigNum.toString(2).length + 1;
+    } else {
+        const absNum = -bigNum;
+        return absNum.toString(2).length + 1;
+    }
+}
+
 function formatOutput(value) {
     const number = value.trim();
     let formattedValue = number;
@@ -56,9 +66,16 @@ function formatOutput(value) {
         case 'sd':
             formattedValue = parsedValue.toString(10);
             break;
-        case 'sb':
-            formattedValue = parsedValue.toString(2);
+        case 'sb': {
+            const bitWidth = getMinimalBitWidth(parsedValue);
+            if (parsedValue < 0n) {
+                const mask = (1n << BigInt(bitWidth)) - 1n;
+                formattedValue = (parsedValue & mask).toString(2);
+            } else {
+                formattedValue = parsedValue.toString(2).padStart(bitWidth, '0');
+            }
             break;
+        }
         case 'sh':
             formattedValue = parsedValue.toString(16).toUpperCase();
             break;
@@ -71,6 +88,7 @@ function formatOutput(value) {
     }
     return formattedValue;
 }
+
 
 function appendOutput(output) {
     const outputLine = document.createElement('div');
