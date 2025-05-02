@@ -1,8 +1,8 @@
 <script lang="ts">
   import XmbWave from '$lib/components/wave_bg.svelte';
   
-  let color1 = "#003300";
-  let color2 = "#c4c700";
+  let color1 = "#4b1f8c";
+  let color2 = "#9c34eb";
 </script>
 
 <XmbWave

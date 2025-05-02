@@ -16,8 +16,8 @@
   }
 
   const waveSettings: WaveSetting[] = [
-    { baseY: 50, amplitude: 25, speed: 0.6, phase: 0 },
-    { baseY: 55, amplitude: 27, speed: 0.8, phase: 1 },
+    { baseY: 50, amplitude: 26, speed: 0.6, phase: 0 },
+    { baseY: 55, amplitude: 27, speed: 0.8, phase: 0.2 },
   ];
 
   type RGB = [number, number, number];
@@ -65,7 +65,7 @@
     ) {
       const topRgb = hexToRgb(primaryColor);
       const bottomRgb = hexToRgb(secondaryColor);
-      const avgColor = blendColors(topRgb, bottomRgb, 0.5);
+      const avgColor = blendColors(topRgb, bottomRgb, 0.8);
       const lightWave = blendColors(avgColor, [255, 255, 255], 0.4);
 
       if (typeof document !== "undefined") {
@@ -181,8 +181,8 @@
 
   :global(.sparkle) {
     position: absolute;
-    width: 6px;
-    height: 6px;
+    width: 0.3vw;
+    height: 0.3vw;
     border-radius: 50%;
     background-color: #ffffff;
     opacity: 0.8;
